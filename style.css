@@ -72,3 +72,9 @@ figure.news-media img{max-height:110px;max-width:100%;width:auto;border-radius:8
 @media(max-width:760px){.header-inner{padding-left:22px;padding-right:22px}}
 /* Bold the student status line (Ph.D. / M.S. / integrated / undergraduate year) under each name. */
 #graduate .profile-body h3+p,#undergraduate .profile-body h3+p,#alumni .profile-body h3+p{font-weight:700;color:var(--ink)}
+/* PI photo: natural 4:5 portrait at the top of the card instead of stretching to the full text height; stays in view while reading. */
+@media(min-width:761px){.profile.lead img.has-photo{height:auto;min-height:0;aspect-ratio:4/5;object-position:center top;align-self:start;position:sticky;top:150px}}
+/* Per-photo framing so faces sit in the middle of the square card. */
+.profile:not(.lead) img.has-photo[data-photo="deniise-liz-namayanja"]{object-position:center 65%}
+.profile:not(.lead) img.has-photo[data-photo="taeuk-kim"]{object-position:center 100%}
+.profile:not(.lead) img.has-photo[data-photo="eunyoung-bae"]{object-position:center 100%}
