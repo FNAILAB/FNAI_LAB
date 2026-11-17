@@ -12,7 +12,7 @@ Lab members use these skills for routine edits (type `/` to see them):
 | `/add-member` | add, update or move a person on the Our Team page |
 | `/add-news` | add a News item on the home page |
 | `/add-event` | add an event (or more photos) on Events & Pictures |
-| `/add-publication` | add or move a paper on Publications |
+| `/add-publication` | add, edit or move a paper on Publications |
 
 For any other change, follow the same workflow below.
 

@@ -1,9 +1,9 @@
 ---
 name: add-publication
-description: Add a paper to the FNAI LAB website's Publications page (publications.html) in the correct section (In Press, International Journal, International Conference) and order, with co-first/corresponding author marks and lab-member name highlighting; or move a paper from In Press to its published section. Use whenever a lab paper is accepted or published.
+description: Add, edit or move a paper on the FNAI LAB website's Publications page (publications.html) — add a new paper in the correct section (In Press, International Journal, International Conference) and order with co-first/corresponding author marks and lab-member highlighting; correct or add details (date, pages, DOI, title, authors, presentation date) to a paper already listed; or move a paper from In Press to its published section. Use whenever a lab paper is accepted, published, presented or needs a correction.
 ---
 
-# Add or move a publication (publications.html)
+# Add, edit or move a publication (publications.html)
 
 Follow the **Workflow for every website change** in `CLAUDE.md` (clean + `git pull --rebase` first; preview and
 approval before editing; version bump; site check; approval before push; chat summary). This file only adds the
@@ -47,7 +47,23 @@ and the last `<li>` of a section ends with `</li></ul></div>`. Entries are newes
 - **In Press:** this section is written inline as `<h2>In Press</h2><ul class="pub-list"><li></li></ul>`. The empty
   `<li></li>` is a placeholder: replace it with the new entry. If In Press already has entries, add the new one first.
 
-## 4. Moving In Press → published
+## 4a. Editing a paper that is already listed
+
+Use this for corrections or extra details (e.g. add a presentation date, fix pages, add a DOI).
+
+1. Find the entry: search `publications.html` for a distinctive part of the title. It must match exactly **one**
+   `<li>`. If it matches none or several, show what you found and ask the user which one.
+2. Change only what the user asked for, inside that one `<li>`. Keep every other character of the entry the same:
+   authors, marks (`*`, ` º`), `&quot;` quotes, punctuation and the link.
+3. If the user does not say exactly where new text goes, put it with the other details in the same style, just
+   **before the link** (or at the end if there is no link), separated by `, ` — and include it in the preview so the
+   user can confirm the wording and position. Example: adding a presentation date
+   `…, Expert Systems with Applications (Volume 309, 11 January 2026, 131184), Presented on November 10, 2026, <a href=…`.
+   Ask how the user wants it labelled if it is unclear what the date means (published, presented, accepted).
+4. Do not move the entry or change the order unless the date change makes the user ask for it.
+5. In the preview, show the entry **before** and **after** so the user can compare.
+
+## 4b. Moving In Press → published
 
 Remove the `<li>` from In Press, update its details (venue, pages, DOI) and insert it in the right published section
 and position. If In Press becomes empty, put the placeholder back exactly: `<ul class="pub-list"><li></li></ul>`.
