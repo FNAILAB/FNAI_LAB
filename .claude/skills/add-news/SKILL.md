@@ -5,7 +5,7 @@ description: Add a News item to the FNAI LAB website home page (index.html) — 
 
 # Add a News item (index.html)
 
-Follow the **Workflow for every website change** in `CLAUDE.md` (clean + `git pull --rebase` first; preview and
+Follow the **Workflow for every website change** in `CLAUDE.md` (check you are on `main`, then start clean and up to date; preview and
 approval before editing; version bump; site check; approval before push; chat summary). This file only adds the
 News specifics. Reply in the user's language; write the News text in English, in the same tone as the existing items.
 

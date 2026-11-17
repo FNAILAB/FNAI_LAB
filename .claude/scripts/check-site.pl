@@ -93,6 +93,19 @@ for my $p (sort keys %pages) {
         if $carDecl != $car;
 }
 
+# Leftover git conflict markers (an unfinished merge/rebase) must never be published.
+for my $f ((sort keys %pages), qw(style.css brand.css script.js)) {
+    next unless -f $f;
+    open my $fh, '<:raw', $f or next;
+    my $n = 0;
+    while (my $l = <$fh>) {
+        $n++;
+        push @errors, "$f line $n: git conflict marker \"" . substr($l, 0, 7) . "\" - finish resolving the conflict first"
+            if $l =~ /^(?:<{7}|={7}|>{7}|\|{7})(?:\s|$)/;
+    }
+    close $fh;
+}
+
 # Version tags must be identical on every page.
 my %distinct;
 for my $k (keys %versions) { (my $v = $k) =~ s/^.*\?v=//; $distinct{$v} = 1; }
