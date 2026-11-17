@@ -70,3 +70,5 @@ figure.news-media img{max-height:110px;max-width:100%;width:auto;border-radius:8
 /* Align header with page content (content box = 1240px wrap minus 42px padding each side). */
 .header-inner{max-width:1240px;padding-left:42px;padding-right:42px}
 @media(max-width:760px){.header-inner{padding-left:22px;padding-right:22px}}
+/* Bold the student status line (Ph.D. / M.S. / integrated / undergraduate year) under each name. */
+#graduate .profile-body h3+p,#undergraduate .profile-body h3+p,#alumni .profile-body h3+p{font-weight:700;color:var(--ink)}
