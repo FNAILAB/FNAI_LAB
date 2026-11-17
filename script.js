@@ -20,7 +20,8 @@ document.addEventListener('keydown', event => {
 const labMembers = [
   'Nilufar Khodzhaeva', 'Sunghyun Ryu', 'Donghyeon Park',
   'Jinkyeong Choi', 'Yejin Noh', 'Donghee Choi',
-  'Jaesung Hwang', 'Mogan Gim'
+  'Jaesung Hwang', 'Mogan Gim',
+  'Chaebin Jeong', 'Hyeren Yu'
 ];
 
 document.querySelectorAll('.pub-list li').forEach(item => {
@@ -53,6 +54,62 @@ document.querySelectorAll('img[src="assets/logo.png"]').forEach((img) => {
   }, { once: true });
 });
 
-document.querySelectorAll('.profile img[src*="avatar-placeholder.svg"]').forEach((img) => {
-  img.setAttribute('src', 'assets/avatar-placeholder.svg');
+// Team photos: drop a file named <data-photo>.jpg / .jpeg / .png / .webp into
+// assets/team/ and it replaces the placeholder automatically.
+document.querySelectorAll('.profile img[data-photo]').forEach((img) => {
+  const candidates = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'PNG']
+    .map(ext => `assets/team/${img.dataset.photo}.${ext}`);
+  const tryNext = () => {
+    const src = candidates.shift();
+    if (!src) return;
+    const probe = new Image();
+    probe.onload = () => { img.src = src; img.classList.add('has-photo'); };
+    probe.onerror = tryNext;
+    probe.src = src;
+  };
+  tryNext();
+});
+
+// Carousels: swipe/scroll track with arrows, dots and a counter.
+document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+  const track = carousel.querySelector('.carousel-track');
+  const slides = [...track.children];
+  if (slides.length < 2) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const go = (i) => {
+    const index = (i + slides.length) % slides.length;
+    track.scrollTo({ left: index * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+  };
+  const current = () => Math.round(track.scrollLeft / track.clientWidth);
+  const button = (cls, label, text, step) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `carousel-btn ${cls}`;
+    b.setAttribute('aria-label', label);
+    b.textContent = text;
+    b.addEventListener('click', () => go(current() + step));
+    carousel.append(b);
+  };
+  button('prev', 'Previous photo', '‹', -1);
+  button('next', 'Next photo', '›', 1);
+  const count = document.createElement('span');
+  count.className = 'carousel-count';
+  const dots = document.createElement('div');
+  dots.className = 'carousel-dots';
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', `Photo ${i + 1} of ${slides.length}`);
+    d.addEventListener('click', () => go(i));
+    dots.append(d);
+  });
+  carousel.append(count, dots);
+  const sync = () => {
+    const i = current();
+    count.textContent = `${i + 1} / ${slides.length}`;
+    [...dots.children].forEach((d, k) => d.setAttribute('aria-current', String(k === i)));
+  };
+  track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
 });
