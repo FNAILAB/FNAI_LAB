@@ -63,3 +63,10 @@ figure.news-media img{max-height:110px;max-width:100%;width:auto;border-radius:8
 .hero-copy .quote{color:#f2bd63!important}
 .hero-copy>p:not(.kicker):not(.quote){color:#fff}
 .profile:not(.lead) img.has-photo{aspect-ratio:1/1;object-position:center 25%}
+
+/* Full-width dark hero backgrounds on large screens (brand.css sets max-width:none, but .wrap above overrode it). */
+.hero.wrap,.page-hero.wrap{max-width:none;padding-left:max(42px,calc((100% - 1156px)/2));padding-right:max(42px,calc((100% - 1156px)/2))}
+@media(max-width:760px){.hero.wrap,.page-hero.wrap{padding-left:22px;padding-right:22px}}
+/* Align header with page content (content box = 1240px wrap minus 42px padding each side). */
+.header-inner{max-width:1240px;padding-left:42px;padding-right:42px}
+@media(max-width:760px){.header-inner{padding-left:22px;padding-right:22px}}
