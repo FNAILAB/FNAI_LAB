@@ -13,6 +13,7 @@ Lab members use these skills for routine edits (type `/` to see them):
 | `/add-news` | add a News item on the home page |
 | `/add-event` | add an event (or more photos) on Events & Pictures |
 | `/add-publication` | add, edit or move a paper on Publications |
+| `/team-photo` | add, replace or re-frame team member photos in one fixed standard |
 
 For any other change, follow the same workflow below.
 
@@ -81,7 +82,7 @@ Resize every new photo with the helper. It fixes phone photos that would show si
 
 | Kind | Folder | File name | MaxSide |
 |---|---|---|---|
-| Team member photo | `assets/team/` | `<data-photo slug>.jpg` (e.g. `minkyeong-jun.jpg`) | 1200 |
+| Team member photo | `assets/team/` | `<data-photo slug>.jpg` — always 900×900, made with the `/team-photo` skill (not resize-image) | — |
 | News photo | `assets/news/` | `<short-event-slug>-<n>.jpg` (e.g. `kcc2026-award-1.jpg`) | 1600 |
 | News logo/graphic (venue or journal logo) | `assets/news/` | `<slug>.png` (keep PNG for logos) | 1200 |
 | Event photo | `assets/events/` | `<yyyy>-<mm>-<event-slug>-<n>.jpg` (e.g. `2026-12-ksc-busan-1.jpg`) | 1600 |

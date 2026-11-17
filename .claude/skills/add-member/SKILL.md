@@ -80,16 +80,10 @@ Default order, unless the user says otherwise:
 
 ## 5. Photo
 
-1. Ask for the photo file (JPG/PNG; HEIC must be exported to JPG first). A clear face, ideally portrait.
-2. Resize to `assets/team/SLUG.jpg` with MaxSide 1200 (commands in `CLAUDE.md` → Photo rules). If the person already
-   has a photo and the user wants it replaced, the new file overwrites `SLUG.jpg`; remove any other file for the same
-   SLUG with a different extension (`git rm assets/team/SLUG.png`) so only one remains.
-3. Look at the resized image: upright, correct person.
-4. Framing: the cards show a centred **square** crop taken 25% of the way down the image. For a tall photo where the face
-   sits low (face centre below ~45% of the height), add one rule at the end of `style.css` so the face is centred, e.g.
-   `.profile:not(.lead) img.has-photo[data-photo="SLUG"]{object-position:center 65%}` (0% = top, 100% = bottom).
-   Existing examples are already in `style.css`.
-5. Add a line `SLUG.jpg<spaces>English Name` to `assets/team/README.txt` for a new member.
+Team photos must follow the fixed standard (900 × 900 square, same head size and position for everyone).
+Ask for the photo file (JPG/PNG; HEIC must be exported to JPG first) and follow **steps 2–7 of the `/team-photo`
+skill** (`.claude/skills/team-photo/SKILL.md`) to create `assets/team/SLUG.jpg`. Do not use `resize-image` or per-photo
+CSS for team cards. The P.I. photo is the only exception (see that skill).
 
 ## 6. Publications highlighting
 
