@@ -73,9 +73,6 @@ figure.news-media img{max-height:110px;max-width:100%;width:auto;border-radius:8
 /* Bold the student status line (Ph.D. / M.S. / integrated / undergraduate year) under each name. */
 #graduate .profile-body h3+p,#undergraduate .profile-body h3+p,#alumni .profile-body h3+p{font-weight:700;color:var(--ink)}
 /* Per-photo framing so faces sit in the middle of the square card. */
-.profile:not(.lead) img.has-photo[data-photo="deniise-liz-namayanja"]{object-position:center 65%}
-.profile:not(.lead) img.has-photo[data-photo="taeuk-kim"]{object-position:center 100%}
-.profile:not(.lead) img.has-photo[data-photo="eunyoung-bae"]{object-position:center 100%}
 /* PI card: photo fills the top-left cell and ends exactly where the intro text (name → links) ends; Work Experience/Education span the full width below. */
 .profile.lead>.profile-body{padding-bottom:0}.profile.lead>.profile-body>p:last-child{margin-bottom:0}
 .profile.lead>.details{grid-column:1/-1;margin:30px 0 0;padding:30px 34px 34px;border-top:1px solid #cbd8dd}
